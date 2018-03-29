@@ -13,7 +13,15 @@ def is_prime(n):
     False
     """
     # PUT YOUR CODE HERE
-    pass
+    if n == 1:
+        return False
+    if n == 2:
+        return True
+    for x in range(2, n):
+        if n % x == 0:
+            return False
+        else:
+            return True
 
 
 def gcd(a, b):
@@ -25,8 +33,12 @@ def gcd(a, b):
     >>> gcd(3, 7)
     1
     """
-    # PUT YOUR CODE HERE
-    pass
+    while a != 0 and b != 0:
+        if a > b:
+            a = a % b
+        else:
+            b = b % a
+    return a + b
 
 
 def multiplicative_inverse(e, phi):
@@ -38,7 +50,23 @@ def multiplicative_inverse(e, phi):
     23
     """
     # PUT YOUR CODE HERE
-    pass
+    d = 0
+    x1 = 0
+    x2 = 1
+    y1 = 1
+    temp_phi = phi
+    while e > 0:
+        temp1 = int(temp_phi / e)
+        temp2 = temp_phi - temp1 * e
+        temp_phi, e = e, temp2
+        x = x2 - temp1 * x1
+        y = d - temp1 * y1
+        x2, x1 = x1, x
+        d, y1 = y1, y
+        if temp_phi == 1:
+            d += phi
+            break
+    return d
 
 
 def generate_keypair(p, q):
@@ -47,10 +75,10 @@ def generate_keypair(p, q):
     elif p == q:
         raise ValueError('p and q cannot be equal')
 
-    # n = pq
+    n = p*q
     # PUT YOUR CODE HERE
 
-    # phi = (p-1)(q-1)
+    phi = (p-1)*(q-1)
     # PUT YOUR CODE HERE
 
     # Choose an integer e such that e and phi(n) are coprime
@@ -67,7 +95,7 @@ def generate_keypair(p, q):
 
     # Return public and private keypair
     # Public key is (e, n) and private key is (d, n)
-    return ((e, n), (d, n))
+    return (e, n), (d, n)
 
 
 def encrypt(pk, plaintext):
