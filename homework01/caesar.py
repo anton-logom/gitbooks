@@ -20,6 +20,7 @@ def encrypt_caesar(plaintext):
             if ord(s) in range(88, 90) or ord(s) in range(120, 122):
                 ciphertext += chr(ord(s) - 23)
             else:
+
                 ciphertext += s
 
     return ciphertext

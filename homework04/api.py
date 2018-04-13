@@ -4,7 +4,7 @@ import plotly
 
 
 config = {
-    'VK_ACCESS_TOKEN': 'Tокен доступа для ВК',
+    'VK_ACCESS_TOKEN': 'dbc8cac75f6f3ca564944d271b1f7cc3f4c1730d969b4a1303917d024046f59aa5fcb251455b543caaf6a',
     'PLOTLY_USERNAME': 'Имя пользователя Plot.ly',
     'PLOTLY_API_KEY': 'Ключ доступа Plot.ly'
 }
@@ -20,6 +20,10 @@ def get(url, params={}, timeout=5, max_retries=5, backoff_factor=0.3):
     :param backoff_factor: коэффициент экспоненциального нарастания задержки
     """
     # PUT YOUR CODE HERE
+    for i in range (1,max_retries):
+
+        response = requests.get(url, timeout=timeout)
+
 
 
 def get_friends(user_id, fields):

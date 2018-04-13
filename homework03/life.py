@@ -1,6 +1,6 @@
 import pygame
-from pygame.locals import *
 import random
+
 
 class GameOfLife:
 
@@ -43,7 +43,7 @@ class GameOfLife:
         running = True
         while running:
             for event in pygame.event.get():
-                if event.type == QUIT:
+                if event.type == 'QUIT':
                     running = False
 
             # Отрисовка списка клеток
@@ -118,7 +118,6 @@ class GameOfLife:
 
         if cell[1] - 1 >= 0:
             neighbours.append(self.clist[cell[0]][cell[1] - 1])
-
 
         return neighbours
 
